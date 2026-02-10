@@ -1,10 +1,10 @@
 # Bun Svelte PWA
 
-A TypeScript monorepo template for building Progressive Web Apps (PWA) with Svelte and Bun runtime.
+A TypeScript monorepo template for building Progressive Web Apps (PWA) with Svelte. Compatible with both Bun and npm package managers.
 
 ## Features
 
-- 🚀 **Bun Runtime** - Fast JavaScript runtime with built-in package manager
+- 🚀 **Bun & npm Compatible** - Works with both Bun and npm package managers
 - 📦 **Monorepo Structure** - Organized with workspaces pattern
 - 🎯 **TypeScript** - Full TypeScript support across all modules
 - ⚡ **Svelte** - Reactive and efficient UI framework
@@ -42,10 +42,16 @@ bun-svelte-pwa/
 
 ## Prerequisites
 
-- [Bun](https://bun.sh) >= 1.0.0 (or Node.js >= 18)
-- npm >= 9.0.0
+Choose one of the following package managers:
+
+- **Option 1:** [Bun](https://bun.sh) >= 1.0.0 (Recommended for faster performance)
+- **Option 2:** [Node.js](https://nodejs.org) >= 18.0.0 with npm >= 9.0.0
+
+Both package managers are fully supported and work identically.
 
 ## Getting Started
+
+### Using npm
 
 1. **Install dependencies:**
 
@@ -58,8 +64,6 @@ npm install
 ```bash
 npm run dev
 ```
-
-This will start the development server at `http://localhost:5173`
 
 3. **Build for production:**
 
@@ -79,10 +83,45 @@ npm run preview
 npm test
 ```
 
+### Using Bun
+
+1. **Install dependencies:**
+
+```bash
+bun install
+```
+
+2. **Start development server:**
+
+```bash
+bun dev
+```
+
+3. **Build for production:**
+
+```bash
+bun run build
+```
+
+4. **Preview production build:**
+
+```bash
+bun run preview
+```
+
+5. **Run tests:**
+
+```bash
+bun test
+```
+
+> **Note:** All commands work identically with both `npm` and `bun`. The development server starts at `http://localhost:5173`
+
 ## Workspace Commands
 
-The monorepo uses npm workspaces to manage multiple packages:
+The monorepo uses workspaces to manage multiple packages. Commands work with both npm and Bun:
 
+**With npm:**
 - `npm run dev` - Start development server for the app module
 - `npm run build` - Build the app module for production
 - `npm run preview` - Preview the production build
@@ -90,6 +129,15 @@ The monorepo uses npm workspaces to manage multiple packages:
 - `npm run test:ui` - Run tests in UI mode
 - `npm run type-check` - Run TypeScript type checking across all modules
 - `npm run clean` - Clean build artifacts from all modules
+
+**With Bun:**
+- `bun dev` - Start development server for the app module
+- `bun run build` - Build the app module for production
+- `bun run preview` - Preview the production build
+- `bun test` - Run Playwright tests
+- `bun run test:ui` - Run tests in UI mode
+- `bun run type-check` - Run TypeScript type checking across all modules
+- `bun run clean` - Clean build artifacts from all modules
 
 ## Adding New Modules
 
@@ -103,9 +151,16 @@ mkdir modules/your-module
 
 2. Initialize a new package:
 
+**With npm:**
 ```bash
 cd modules/your-module
 npm init
+```
+
+**With Bun:**
+```bash
+cd modules/your-module
+bun init
 ```
 
 3. The module will automatically be included in the workspace.
@@ -131,9 +186,16 @@ Playwright is configured for end-to-end testing:
 
 - **Configuration**: `modules/app/playwright.config.ts`
 - **Tests Location**: `modules/app/tests/`
-- **Run Tests**: `npm test`
-- **UI Mode**: `npm run test:ui`
-- **Headed Mode**: `npm run test:headed`
+
+**With npm:**
+- `npm test` - Run all tests
+- `npm run test:ui` - Run tests in UI mode
+- `npm run test:headed` - Run tests in headed mode
+
+**With Bun:**
+- `bun test` - Run all tests
+- `bun run test:ui` - Run tests in UI mode
+- `bun run test:headed` - Run tests in headed mode
 
 Example test:
 ```typescript
