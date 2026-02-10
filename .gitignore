@@ -146,3 +146,7 @@ playwright/.cache/
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Nx cache
+.nx/cache
+.nx/workspace-data
