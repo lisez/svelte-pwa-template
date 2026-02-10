@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="180" height="180" viewBox="0 0 180 180">
+  <rect width="180" height="180" fill="#ff3e00" rx="40"/>
+  <path fill="#fff" d="M133.7 39.8c-6.9-9.8-20.3-12.8-30.5-6.6l-17.2 10.9c-4.7 3-8 7.8-9 13.4-.8 4.6-.1 9.3 2.1 13.4-1.5 2.3-2.5 4.8-2.9 7.4-1 5.6.3 11.4 3.6 16 6.9 9.8 20.3 12.8 30.5 6.6l17.2-10.9c4.7-3 8-7.8 9-13.4.8-4.6.1-9.3-2.1-13.4 1.5-2.3 2.5-4.8 2.9-7.4 1-5.6-.3-11.5-3.6-16z"/>
+  <text x="90" y="135" font-family="Arial, sans-serif" font-size="42" font-weight="bold" text-anchor="middle" fill="#fff">PWA</text>
+</svg>

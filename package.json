@@ -1,0 +1,22 @@
+{
+  "name": "bun-svelte-pwa",
+  "version": "1.0.0",
+  "description": "TypeScript monorepo template for Svelte PWA with Bun runtime",
+  "private": true,
+  "workspaces": [
+    "modules/*"
+  ],
+  "scripts": {
+    "dev": "bun --filter app dev",
+    "build": "bun --filter app build",
+    "preview": "bun --filter app preview",
+    "clean": "bun run --filter '*' clean",
+    "type-check": "bun run --filter '*' type-check"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "bun": ">=1.0.0"
+  }
+}
