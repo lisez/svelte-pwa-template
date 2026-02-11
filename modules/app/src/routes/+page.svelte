@@ -1,41 +1,19 @@
 <script lang="ts">
-  import svelteLogo from './assets/svelte.svg'
-  import bunLogo from './assets/bun.svg'
-  import Counter from './lib/Counter.svelte'
+  import svelteLogo from '$lib/assets/svelte.svg'
+  import bunLogo from '$lib/assets/bun.svg'
+  import Counter from '$lib/Counter.svelte'
   import { formatDate, getEnvironment } from '@bun-svelte-pwa/shared'
+  import { getContext } from 'svelte'
 
-  interface BeforeInstallPromptEvent extends Event {
-    prompt(): Promise<void>
-    userChoice: Promise<{ outcome: 'accepted' | 'dismissed' }>
+  interface PWAContext {
+    isPWAInstallable: boolean
+    installPWA: () => Promise<void>
   }
 
-  let isPWAInstallable = false
-  let deferredPrompt: BeforeInstallPromptEvent | null = null
+  const pwa = getContext<PWAContext>('pwa')
   
   const currentDate = formatDate(new Date())
   const environment = getEnvironment()
-
-  if ('serviceWorker' in navigator) {
-    import('workbox-window').then(({ Workbox }) => {
-      const wb = new Workbox('/sw.js')
-      wb.register()
-    })
-  }
-
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault()
-    deferredPrompt = e as BeforeInstallPromptEvent
-    isPWAInstallable = true
-  })
-
-  const installPWA = async () => {
-    if (deferredPrompt) {
-      await deferredPrompt.prompt()
-      const { outcome } = await deferredPrompt.userChoice
-      deferredPrompt = null
-      isPWAInstallable = false
-    }
-  }
 </script>
 
 <main class="max-w-5xl mx-auto px-8 py-16 text-center">
@@ -56,10 +34,10 @@
     <Counter />
   </div>
 
-  {#if isPWAInstallable}
+  {#if pwa.isPWAInstallable}
     <div class="my-8">
       <button 
-        on:click={installPWA}
+        onclick={pwa.installPWA}
         class="text-lg px-6 py-3 bg-gradient-to-r from-orange-600 to-orange-500 rounded-lg text-white cursor-pointer transition-transform hover:scale-105 border-none"
       >
         📱 Install as App
