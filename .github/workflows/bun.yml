@@ -2,33 +2,33 @@ name: Bun
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [main, master]
   pull_request:
-    branches: [ main, master ]
+    branches: [main, master]
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     permissions:
       contents: read
-    
+
     name: Test with Bun
-    
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Setup Bun
-      uses: oven-sh/setup-bun@v2
-      with:
-        bun-version: 'latest'
-        
-    - name: Install dependencies
-      run: bun install
-      
-    - name: Run type check
-      run: bun run type-check
-      
-    - name: Run unit tests
-      run: bun test modules/*/src/**/*.test.ts
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 'latest'
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Run type check
+        run: bun run type-check
+
+      - name: Run unit tests
+        run: bun test modules/*/src/**/*.test.ts

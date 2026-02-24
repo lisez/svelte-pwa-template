@@ -13,7 +13,7 @@ plugin({
       try {
         const source = readFileSync(path, 'utf-8');
         const isSvelteFile = path.endsWith('.svelte');
-        
+
         let js;
 
         if (isSvelteFile) {
@@ -25,9 +25,11 @@ plugin({
             });
             codeToCompile = preprocessed.code;
           } catch (error) {
-            throw new Error(`Failed to preprocess Svelte component at ${path}: ${error instanceof Error ? error.message : String(error)}`);
+            throw new Error(
+              `Failed to preprocess Svelte component at ${path}: ${error instanceof Error ? error.message : String(error)}`,
+            );
           }
-          
+
           // Compile the preprocessed code
           try {
             const result = compile(codeToCompile, {
@@ -37,7 +39,9 @@ plugin({
             });
             js = result.js;
           } catch (error) {
-            throw new Error(`Failed to compile Svelte component at ${path}: ${error instanceof Error ? error.message : String(error)}`);
+            throw new Error(
+              `Failed to compile Svelte component at ${path}: ${error instanceof Error ? error.message : String(error)}`,
+            );
           }
         } else {
           // Compile Svelte module (.svelte.js/.svelte.ts)
@@ -48,7 +52,9 @@ plugin({
             });
             js = result.js;
           } catch (error) {
-             throw new Error(`Failed to compile Svelte module at ${path}: ${error instanceof Error ? error.message : String(error)}`);
+            throw new Error(
+              `Failed to compile Svelte module at ${path}: ${error instanceof Error ? error.message : String(error)}`,
+            );
           }
         }
 
@@ -58,11 +64,17 @@ plugin({
         };
       } catch (error) {
         // Re-throw if it's already our formatted error
-        if (error instanceof Error && (error.message.includes('Failed to preprocess') || error.message.includes('Failed to compile'))) {
+        if (
+          error instanceof Error &&
+          (error.message.includes('Failed to preprocess') ||
+            error.message.includes('Failed to compile'))
+        ) {
           throw error;
         }
         // Otherwise, wrap in a generic error
-        throw new Error(`Failed to process Svelte component at ${path}: ${error instanceof Error ? error.message : String(error)}`);
+        throw new Error(
+          `Failed to process Svelte component at ${path}: ${error instanceof Error ? error.message : String(error)}`,
+        );
       }
     });
   },

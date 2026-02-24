@@ -5,16 +5,16 @@ Shared utilities and types for the Bun Svelte PWA monorepo.
 ## Usage
 
 ```typescript
-import { formatDate, generateId, delay } from '@bun-svelte-pwa/shared'
+import { formatDate, generateId, delay } from '@bun-svelte-pwa/shared';
 
 // Format a date
-const formatted = formatDate(new Date())
+const formatted = formatDate(new Date());
 
 // Generate a unique ID
-const id = generateId()
+const id = generateId();
 
 // Add a delay
-await delay(1000)
+await delay(1000);
 ```
 
 ## Available Functions

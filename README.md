@@ -130,6 +130,7 @@ bun test
 The monorepo uses Nx for efficient task management with caching and dependency handling. Commands work with both npm and Bun:
 
 **With npm:**
+
 - `npm run dev` - Start development server for the app module
 - `npm run build` - Build the app module for production
 - `npm run preview` - Preview the production build
@@ -140,6 +141,7 @@ The monorepo uses Nx for efficient task management with caching and dependency h
 - `npm run clean` - Clean build artifacts from all modules
 
 **With Bun:**
+
 - `bun dev` - Start development server for the app module
 - `bun run build` - Build the app module for production
 - `bun run preview` - Preview the production build
@@ -170,6 +172,7 @@ npx nx reset
 ```
 
 **Benefits of Nx:**
+
 - ⚡ **Smart Caching** - Nx caches task results and only rebuilds what changed
 - 🔗 **Task Dependencies** - Automatically runs dependent tasks in the correct order
 - 📊 **Task Orchestration** - Efficiently runs tasks across multiple projects in parallel
@@ -188,12 +191,14 @@ mkdir modules/your-module
 2. Initialize a new package:
 
 **With npm:**
+
 ```bash
 cd modules/your-module
 npm init
 ```
 
 **With Bun:**
+
 ```bash
 cd modules/your-module
 bun init
@@ -230,6 +235,7 @@ The template uses Tailwind CSS for styling:
 - **Usage**: Use Tailwind utility classes directly in your Svelte components
 
 Example:
+
 ```svelte
 <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600">
   Click me
@@ -243,6 +249,7 @@ The project includes two types of tests:
 ### Unit Tests (Vitest)
 
 Unit tests are located in `modules/app/src/**/*.test.ts` and use:
+
 - **Vitest** - Fast unit test framework
 - **@testing-library/svelte** - Testing utilities for Svelte components
 - **jsdom** - DOM implementation for Node.js/npm
@@ -251,6 +258,7 @@ Unit tests are located in `modules/app/src/**/*.test.ts` and use:
 **Running unit tests:**
 
 With npm:
+
 ```bash
 npm test              # Run tests once
 npm run test:watch    # Run in watch mode
@@ -258,6 +266,7 @@ npm run test:ui       # Run with UI
 ```
 
 With Bun:
+
 ```bash
 bun test              # Run tests once
 bun run test:watch    # Run in watch mode
@@ -267,6 +276,7 @@ bun run test:ui       # Run with UI
 **Bun-specific setup:**
 
 When running tests with Bun's test runner, the project uses:
+
 - `happydom.ts` - Registers Happy DOM to provide browser APIs like `document` and `window`
 - `svelte-loader.ts` - Compiles `.svelte` files for the Bun test runner
 - `bunfig.toml` - Configures Bun to preload these files before running tests
@@ -281,16 +291,19 @@ Playwright is configured for end-to-end testing:
 - **Tests Location**: `modules/app/tests/`
 
 **With npm:**
+
 - `npm run test:e2e` - Run E2E tests
 - `npm run test:e2e:ui` - Run E2E tests in UI mode
 - `npm run test:e2e:headed` - Run E2E tests in headed mode
 
 **With Bun:**
+
 - `bun run test:e2e` - Run E2E tests
 - `bun run test:e2e:ui` - Run E2E tests in UI mode
 - `bun run test:e2e:headed` - Run E2E tests in headed mode
 
 Example test:
+
 ```typescript
 import { test, expect } from '@playwright/test';
 
