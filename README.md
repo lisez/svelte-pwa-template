@@ -1,10 +1,10 @@
 # Svelte PWA
 
-A TypeScript monorepo template for building Progressive Web Apps (PWA) with SvelteKit and Node.js.
+A TypeScript monorepo template for building Progressive Web Apps (PWA) with SvelteKit, Node.js, and npm workspaces.
 
 ## Features
 
-- 📦 **Monorepo Structure** - Organized with Nx monorepo tool and workspaces pattern
+- 📦 **Monorepo Structure** - Organized using native npm workspaces
 - 🚀 **Node.js & npm** - Standard Node.js and npm package manager support
 - 🎯 **TypeScript** - Full TypeScript support across all modules
 - ⚡ **SvelteKit** - Full-stack framework with file-based routing
@@ -32,7 +32,6 @@ svelte-pwa/
 │   │   │   └── app.html # HTML template
 │   │   ├── tests/       # Playwright E2E tests
 │   │   ├── package.json
-│   │   ├── project.json # Nx project configuration
 │   │   ├── tsconfig.json
 │   │   ├── svelte.config.js
 │   │   ├── vite.config.ts
@@ -41,9 +40,7 @@ svelte-pwa/
 │   └── shared/          # Shared utilities library
 │       ├── src/
 │       ├── package.json
-│       ├── project.json # Nx project configuration
 │       └── tsconfig.json
-├── nx.json              # Nx workspace configuration
 ├── package.json         # Root package with workspace config
 └── tsconfig.json        # Root TypeScript config
 ```
@@ -89,44 +86,29 @@ The development server starts at `http://localhost:5173`.
 
 ## Workspace Commands
 
-The monorepo uses Nx for efficient task management with caching and dependency handling.
+The monorepo uses npm workspaces to manage modules and run tasks.
 
-- `npm run dev` - Start development server for the app module
-- `npm run build` - Build the app module for production
-- `npm run preview` - Preview the production build
-- `npm test` - Run Vitest tests
-- `npm run test:watch` - Run Vitest in watch mode
-- `npm run test:ui` - Run Vitest tests in UI mode
-- `npm run test:e2e` - Run Playwright E2E tests
-- `npm run type-check` - Run TypeScript type checking across all modules
-- `npm run clean` - Clean build artifacts from all modules
+- `npm run dev` - Start development server for the app module (`npm run dev -w @svelte-pwa/app`)
+- `npm run build` - Build the app module for production (`npm run build -w @svelte-pwa/app`)
+- `npm run preview` - Preview the production build (`npm run preview -w @svelte-pwa/app`)
+- `npm test` - Run Vitest tests (`npm run test -w @svelte-pwa/app`)
+- `npm run test:watch` - Run Vitest in watch mode (`npm run test:watch -w @svelte-pwa/app`)
+- `npm run test:ui` - Run Vitest tests in UI mode (`npm run test:ui -w @svelte-pwa/app`)
+- `npm run test:e2e` - Run Playwright E2E tests (`npm run test:e2e -w @svelte-pwa/app`)
+- `npm run type-check` - Run TypeScript type checking across all workspace modules (`npm run type-check --workspaces --if-present`)
+- `npm run clean` - Clean build artifacts from all modules (`npm run clean --workspaces --if-present`)
 
-### Using Nx Directly
+### Running Commands in Workspaces
 
-You can also use Nx commands directly for more control:
+You can run any script in a specific workspace using the `-w` (or `--workspace`) flag:
 
 ```bash
-# Run a target for a specific project
-npx nx build @svelte-pwa/app
-npx nx type-check @svelte-pwa/shared
+# Run build inside the @svelte-pwa/app workspace
+npm run build -w @svelte-pwa/app
 
-# Run a target for all projects
-npx nx run-many -t build
-npx nx run-many -t type-check
-
-# View project graph
-npx nx graph
-
-# Clear Nx cache
-npx nx reset
+# Run a custom command in the @svelte-pwa/shared workspace
+npm exec -w @svelte-pwa/shared -- tsc --noEmit
 ```
-
-**Benefits of Nx:**
-
-- ⚡ **Smart Caching** - Nx caches task results and only rebuilds what changed
-- 🔗 **Task Dependencies** - Automatically runs dependent tasks in the correct order
-- 📊 **Task Orchestration** - Efficiently runs tasks across multiple projects in parallel
-- 📈 **Project Graph** - Visualize dependencies between projects
 
 ## Adding New Modules
 
@@ -145,27 +127,11 @@ cd modules/your-module
 npm init
 ```
 
-3. Create a `project.json` file in the new module directory to configure Nx targets:
+Make sure to set the package name to something like `@svelte-pwa/your-module`.
 
-```json
-{
-  "name": "@svelte-pwa/your-module",
-  "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "modules/your-module/src",
-  "projectType": "library",
-  "targets": {
-    "build": {
-      "executor": "nx:run-commands",
-      "options": {
-        "command": "tsc",
-        "cwd": "modules/your-module"
-      }
-    }
-  }
-}
-```
+3. Register your module in the root `package.json` under the `workspaces` array (it defaults to `modules/*`, so any folder in `modules/` is automatically picked up).
 
-4. The module will automatically be included in the Nx workspace.
+4. Install any dependencies and run `npm install` at the root to regenerate symlinks.
 
 ## Tailwind CSS
 

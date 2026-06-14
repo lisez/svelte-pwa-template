@@ -7,22 +7,20 @@
     "modules/*"
   ],
   "scripts": {
-    "dev": "nx dev @svelte-pwa/app",
-    "build": "nx build @svelte-pwa/app",
-    "preview": "nx preview @svelte-pwa/app",
-    "test": "nx test @svelte-pwa/app",
-    "test:watch": "nx test:watch @svelte-pwa/app",
-    "test:ui": "nx test:ui @svelte-pwa/app",
-    "test:e2e": "nx test:e2e @svelte-pwa/app",
-    "test:e2e:ui": "nx test:e2e:ui @svelte-pwa/app",
-    "clean": "nx run-many -t clean",
-    "type-check": "nx run-many -t type-check"
+    "dev": "npm run dev -w @svelte-pwa/app",
+    "build": "npm run build -w @svelte-pwa/app",
+    "preview": "npm run preview -w @svelte-pwa/app",
+    "test": "npm run test -w @svelte-pwa/app",
+    "test:watch": "npm run test:watch -w @svelte-pwa/app",
+    "test:ui": "npm run test:ui -w @svelte-pwa/app",
+    "test:e2e": "npm run test:e2e -w @svelte-pwa/app",
+    "test:e2e:ui": "npm run test:e2e:ui -w @svelte-pwa/app",
+    "clean": "npm run clean --workspaces --if-present",
+    "type-check": "npm run type-check --workspaces --if-present"
   },
   "devDependencies": {
     "@happy-dom/global-registrator": "^20.10.3",
-    "@nx/workspace": "^22.7.5",
-    "@types/node": "^24",
-    "nx": "^22.7.5",
+    "@types/node": "^22.13.0",
     "typescript": "^6.0.3"
   },
   "engines": {
