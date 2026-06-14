@@ -12,5 +12,8 @@ export default {
     alias: {
       $lib: './src/lib',
     },
+    files: {
+      assets: 'public',
+    },
   },
 };

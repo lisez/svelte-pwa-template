@@ -1,5 +1,5 @@
 {
-  "name": "@bun-svelte-pwa/app",
+  "name": "@svelte-pwa/app",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "modules/app/src",
   "projectType": "application",

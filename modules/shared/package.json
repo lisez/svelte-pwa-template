@@ -1,5 +1,5 @@
 {
-  "name": "@bun-svelte-pwa/shared",
+  "name": "@svelte-pwa/shared",
   "version": "1.0.0",
   "type": "module",
   "private": true,

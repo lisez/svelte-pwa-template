@@ -1,5 +1,5 @@
 /**
- * Shared utilities for the Bun Svelte PWA monorepo
+ * Shared utilities for the Svelte PWA monorepo
  */
 
 /**

@@ -23,7 +23,7 @@ test.describe('PWA Features', () => {
     // In dev mode, Vite PWA might inject manifest via script
     // Just verify the page loads and has PWA setup
     const title = await page.title();
-    expect(title).toContain('Bun Svelte PWA');
+    expect(title).toContain('Svelte PWA');
   });
 
   test('app is responsive', async ({ page }) => {
@@ -31,7 +31,7 @@ test.describe('PWA Features', () => {
 
     // Test different viewport sizes
     await page.setViewportSize({ width: 375, height: 667 }); // Mobile
-    const heading = page.getByRole('heading', { name: /Bun \+ Svelte PWA/i });
+    const heading = page.getByRole('heading', { name: /Svelte PWA/i });
     await expect(heading).toBeVisible();
 
     await page.setViewportSize({ width: 1920, height: 1080 }); // Desktop

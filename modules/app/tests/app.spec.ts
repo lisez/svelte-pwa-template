@@ -4,15 +4,15 @@ test.describe('App', () => {
   test('has title', async ({ page }) => {
     await page.goto('/');
 
-    // Expect a title containing "Bun Svelte PWA"
-    await expect(page).toHaveTitle(/Bun Svelte PWA/);
+    // Expect a title containing "Svelte PWA"
+    await expect(page).toHaveTitle(/Svelte PWA/);
   });
 
   test('displays main heading', async ({ page }) => {
     await page.goto('/');
 
     // Expect the main heading to be visible
-    const heading = page.getByRole('heading', { name: /Bun \+ Svelte PWA/i });
+    const heading = page.getByRole('heading', { name: /Svelte PWA/i });
     await expect(heading).toBeVisible();
   });
 
@@ -26,10 +26,6 @@ test.describe('App', () => {
 
   test('shows logos with correct links', async ({ page }) => {
     await page.goto('/');
-
-    // Check Bun logo link
-    const bunLink = page.getByRole('link', { name: /Bun Logo/i });
-    await expect(bunLink).toHaveAttribute('href', 'https://bun.sh');
 
     // Check Svelte logo link
     const svelteLink = page.getByRole('link', { name: /Svelte Logo/i });

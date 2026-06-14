@@ -1,11 +1,11 @@
-# @bun-svelte-pwa/shared
+# @svelte-pwa/shared
 
-Shared utilities and types for the Bun Svelte PWA monorepo.
+Shared utilities and types for the Svelte PWA monorepo.
 
 ## Usage
 
 ```typescript
-import { formatDate, generateId, delay } from '@bun-svelte-pwa/shared';
+import { formatDate, generateId, delay } from '@svelte-pwa/shared';
 
 // Format a date
 const formatted = formatDate(new Date());

@@ -1,11 +1,11 @@
-# Bun Svelte PWA
+# Svelte PWA
 
-A TypeScript monorepo template for building Progressive Web Apps (PWA) with SvelteKit. Compatible with both Bun and npm package managers.
+A TypeScript monorepo template for building Progressive Web Apps (PWA) with SvelteKit and Node.js.
 
 ## Features
 
-- 🚀 **Bun & npm Compatible** - Works with both Bun and npm package managers
 - 📦 **Monorepo Structure** - Organized with Nx monorepo tool and workspaces pattern
+- 🚀 **Node.js & npm** - Standard Node.js and npm package manager support
 - 🎯 **TypeScript** - Full TypeScript support across all modules
 - ⚡ **SvelteKit** - Full-stack framework with file-based routing
 - 🎨 **Svelte 5** - Latest Svelte with modern runes and snippets
@@ -19,7 +19,7 @@ A TypeScript monorepo template for building Progressive Web Apps (PWA) with Svel
 ## Project Structure
 
 ```
-bun-svelte-pwa/
+svelte-pwa/
 ├── modules/              # Workspace modules
 │   ├── app/             # Main SvelteKit PWA application
 │   │   ├── public/      # Static assets
@@ -50,16 +50,10 @@ bun-svelte-pwa/
 
 ## Prerequisites
 
-Choose one of the following package managers:
-
-- **Option 1:** [Bun](https://bun.sh) >= 1.0.0 (Recommended for faster performance)
-- **Option 2:** [Node.js](https://nodejs.org) >= 18.0.0 with npm >= 9.0.0
-
-Both package managers are fully supported and work identically.
+- [Node.js](https://nodejs.org) >= 18.0.0
+- npm >= 9.0.0
 
 ## Getting Started
-
-### Using npm
 
 1. **Install dependencies:**
 
@@ -91,65 +85,21 @@ npm run preview
 npm test
 ```
 
-### Using Bun
-
-1. **Install dependencies:**
-
-```bash
-bun install
-```
-
-2. **Start development server:**
-
-```bash
-bun dev
-```
-
-3. **Build for production:**
-
-```bash
-bun run build
-```
-
-4. **Preview production build:**
-
-```bash
-bun run preview
-```
-
-5. **Run tests:**
-
-```bash
-bun test
-```
-
-> **Note:** All commands work identically with both `npm` and `bun`. The development server starts at `http://localhost:5173`
+The development server starts at `http://localhost:5173`.
 
 ## Workspace Commands
 
-The monorepo uses Nx for efficient task management with caching and dependency handling. Commands work with both npm and Bun:
-
-**With npm:**
+The monorepo uses Nx for efficient task management with caching and dependency handling.
 
 - `npm run dev` - Start development server for the app module
 - `npm run build` - Build the app module for production
 - `npm run preview` - Preview the production build
 - `npm test` - Run Vitest tests
-- `npm run test:ui` - Run tests in UI mode
+- `npm run test:watch` - Run Vitest in watch mode
+- `npm run test:ui` - Run Vitest tests in UI mode
 - `npm run test:e2e` - Run Playwright E2E tests
 - `npm run type-check` - Run TypeScript type checking across all modules
 - `npm run clean` - Clean build artifacts from all modules
-
-**With Bun:**
-
-- `bun dev` - Start development server for the app module
-- `bun run build` - Build the app module for production
-- `bun run preview` - Preview the production build
-- `bun test` - Run Vitest tests
-- `bun run test:ui` - Run tests in UI mode
-- `bun run test:e2e` - Run Playwright E2E tests
-- `bun run type-check` - Run TypeScript type checking across all modules
-- `bun run clean` - Clean build artifacts from all modules
 
 ### Using Nx Directly
 
@@ -157,8 +107,8 @@ You can also use Nx commands directly for more control:
 
 ```bash
 # Run a target for a specific project
-npx nx build @bun-svelte-pwa/app
-npx nx type-check @bun-svelte-pwa/shared
+npx nx build @svelte-pwa/app
+npx nx type-check @svelte-pwa/shared
 
 # Run a target for all projects
 npx nx run-many -t build
@@ -190,25 +140,16 @@ mkdir modules/your-module
 
 2. Initialize a new package:
 
-**With npm:**
-
 ```bash
 cd modules/your-module
 npm init
-```
-
-**With Bun:**
-
-```bash
-cd modules/your-module
-bun init
 ```
 
 3. Create a `project.json` file in the new module directory to configure Nx targets:
 
 ```json
 {
-  "name": "@bun-svelte-pwa/your-module",
+  "name": "@svelte-pwa/your-module",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "modules/your-module/src",
   "projectType": "library",
@@ -253,35 +194,14 @@ Unit tests are located in `modules/app/src/**/*.test.ts` and use:
 - **Vitest** - Fast unit test framework
 - **@testing-library/svelte** - Testing utilities for Svelte components
 - **jsdom** - DOM implementation for Node.js/npm
-- **Happy DOM** - DOM implementation for Bun
 
 **Running unit tests:**
-
-With npm:
 
 ```bash
 npm test              # Run tests once
 npm run test:watch    # Run in watch mode
 npm run test:ui       # Run with UI
 ```
-
-With Bun:
-
-```bash
-bun test              # Run tests once
-bun run test:watch    # Run in watch mode
-bun run test:ui       # Run with UI
-```
-
-**Bun-specific setup:**
-
-When running tests with Bun's test runner, the project uses:
-
-- `happydom.ts` - Registers Happy DOM to provide browser APIs like `document` and `window`
-- `svelte-loader.ts` - Compiles `.svelte` files for the Bun test runner
-- `bunfig.toml` - Configures Bun to preload these files before running tests
-
-This ensures tests work identically with both npm/vitest and Bun's native test runner.
 
 ### End-to-End Tests (Playwright)
 
@@ -290,17 +210,11 @@ Playwright is configured for end-to-end testing:
 - **Configuration**: `modules/app/playwright.config.ts`
 - **Tests Location**: `modules/app/tests/`
 
-**With npm:**
-
-- `npm run test:e2e` - Run E2E tests
-- `npm run test:e2e:ui` - Run E2E tests in UI mode
-- `npm run test:e2e:headed` - Run E2E tests in headed mode
-
-**With Bun:**
-
-- `bun run test:e2e` - Run E2E tests
-- `bun run test:e2e:ui` - Run E2E tests in UI mode
-- `bun run test:e2e:headed` - Run E2E tests in headed mode
+```bash
+npm run test:e2e        # Run E2E tests
+npm run test:e2e:ui     # Run E2E tests in UI mode
+npm run test:e2e:headed # Run E2E tests in headed mode
+```
 
 Example test:
 

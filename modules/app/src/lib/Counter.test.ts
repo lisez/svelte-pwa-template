@@ -6,20 +6,20 @@ describe('Counter Component (Unit Tests)', () => {
   it('renders with initial count of 0', () => {
     render(Counter);
     const button = screen.getByRole('button');
-    expect(button).toHaveTextContent('count is 0');
+    expect(button.textContent).toBe('count is 0');
   });
 
   it('increments count when clicked', async () => {
     render(Counter);
     const button = screen.getByRole('button');
 
-    expect(button).toHaveTextContent('count is 0');
+    expect(button.textContent).toBe('count is 0');
 
     await fireEvent.click(button);
-    expect(button).toHaveTextContent('count is 1');
+    expect(button.textContent).toBe('count is 1');
 
     await fireEvent.click(button);
-    expect(button).toHaveTextContent('count is 2');
+    expect(button.textContent).toBe('count is 2');
   });
 
   it('increments count multiple times', async () => {
@@ -30,6 +30,6 @@ describe('Counter Component (Unit Tests)', () => {
       await fireEvent.click(button);
     }
 
-    expect(button).toHaveTextContent('count is 5');
+    expect(button.textContent).toBe('count is 5');
   });
 });

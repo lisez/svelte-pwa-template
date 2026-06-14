@@ -1,32 +1,31 @@
 {
-  "name": "bun-svelte-pwa",
+  "name": "svelte-pwa",
   "version": "1.0.0",
-  "description": "TypeScript monorepo template for Svelte PWA with Bun runtime",
+  "description": "TypeScript monorepo template for Svelte PWA",
   "private": true,
   "workspaces": [
     "modules/*"
   ],
   "scripts": {
-    "dev": "nx dev @bun-svelte-pwa/app",
-    "build": "nx build @bun-svelte-pwa/app",
-    "preview": "nx preview @bun-svelte-pwa/app",
-    "test": "nx test @bun-svelte-pwa/app",
-    "test:watch": "nx test:watch @bun-svelte-pwa/app",
-    "test:ui": "nx test:ui @bun-svelte-pwa/app",
-    "test:e2e": "nx test:e2e @bun-svelte-pwa/app",
-    "test:e2e:ui": "nx test:e2e:ui @bun-svelte-pwa/app",
+    "dev": "nx dev @svelte-pwa/app",
+    "build": "nx build @svelte-pwa/app",
+    "preview": "nx preview @svelte-pwa/app",
+    "test": "nx test @svelte-pwa/app",
+    "test:watch": "nx test:watch @svelte-pwa/app",
+    "test:ui": "nx test:ui @svelte-pwa/app",
+    "test:e2e": "nx test:e2e @svelte-pwa/app",
+    "test:e2e:ui": "nx test:e2e:ui @svelte-pwa/app",
     "clean": "nx run-many -t clean",
     "type-check": "nx run-many -t type-check"
   },
   "devDependencies": {
     "@happy-dom/global-registrator": "^20.10.3",
     "@nx/workspace": "^22.7.5",
-    "@types/bun": "^1.3.14",
+    "@types/node": "^22.13.0",
     "nx": "^22.7.5",
     "typescript": "^6.0.3"
   },
   "engines": {
-    "node": ">=18.0.0",
-    "bun": ">=1.0.0"
+    "node": ">=18.0.0"
   }
 }

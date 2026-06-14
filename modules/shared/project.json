@@ -1,5 +1,5 @@
 {
-  "name": "@bun-svelte-pwa/shared",
+  "name": "@svelte-pwa/shared",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "modules/shared/src",
   "projectType": "library",

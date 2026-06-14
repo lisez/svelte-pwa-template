@@ -47,11 +47,11 @@
 <svelte:head>
   <meta
     name="description"
-    content="A TypeScript monorepo template for Svelte PWA with Bun runtime"
+    content="A TypeScript monorepo template for Svelte PWA"
   />
   <meta name="theme-color" content="#ff3e00" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-  <title>Bun Svelte PWA</title>
+  <title>Svelte PWA</title>
 </svelte:head>
 
 {@render children?.()}

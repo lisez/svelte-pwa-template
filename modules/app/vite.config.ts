@@ -12,10 +12,10 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
       manifest: {
-        name: 'Bun Svelte PWA',
-        short_name: 'BunSveltePWA',
+        name: 'Svelte PWA',
+        short_name: 'SveltePWA',
         description:
-          'A TypeScript monorepo template for Svelte PWA with Bun runtime',
+          'A TypeScript monorepo template for Svelte PWA',
         theme_color: '#ff3e00',
         background_color: '#ffffff',
         display: 'standalone',
